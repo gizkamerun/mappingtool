@@ -134,7 +134,7 @@ function ModalInstanceCtrl ($scope, $uibModalInstance) {
 };
 
 // Fetch Projects data
-function ProjectCtrl($scope, $uibModal, $http, DTOptionsBuilder) {
+function ProjectCtrl(config_data, $scope, $uibModal, $http, DTOptionsBuilder) {
 
     // this.userName = 'Demo User';
     // this.helloText = 'Welcome to the interactive map service of GIZ Cameroon';
@@ -163,7 +163,7 @@ function ProjectCtrl($scope, $uibModal, $http, DTOptionsBuilder) {
     // Add Markers after map is loaded 
     $scope.fetchProjects = function() {
         //$http.get("js/data.geo.json").success(function(data, status) {
-        $http.get("http://localhost/mappingtool/public/api/projects.json").success(function(data, status) {
+        $http.get(config_data.apiUrl + "/projects.json").success(function(data, status) {
             $scope.projects = data.projects;
             MainCtrl.projects = data.projects;
         
@@ -173,7 +173,7 @@ function ProjectCtrl($scope, $uibModal, $http, DTOptionsBuilder) {
     $scope.fetchProjects();
 };
 
-function MapCtrl($scope, $uibModal, $http) {
+function MapCtrl(config_data, $scope, $uibModal, $http) {
 
     $scope.open = function () {
 
@@ -317,7 +317,7 @@ var datapoints = {};
     // Add Markers after map is loaded 
     $scope.addMarkers = function() {
         //$http.get("js/data.geo.json").success(function(data, status) {
-        $http.get("http://localhost/mappingtool/public/api/points.json").success(function(data, status) {
+        $http.get(config_data.apiUrl + "/points.json").success(function(data, status) {
             datapoints_xhr = data;
             angular.extend($scope, {
                 markers: data.pointers
