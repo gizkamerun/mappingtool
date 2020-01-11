@@ -1,0 +1,89 @@
+{
+    "pointer":{
+    "layer":"GIZ_Office_Cameroun",
+    "lat":3.96632600024569,
+    "lng":11.5500640869141,
+    "message":"<em>My pointer </em><br> ",
+    "icon":{
+    "iconUrl":"http://maps.google.com/mapfiles/ms/icons/red-dot.png",
+    "iconSize":[
+    40,
+    40
+    ]
+    },
+    "focus":false,
+    "draggable":true
+    },
+    "profina":{
+    "layer":"GIZ_Office_Cameroun",
+    "lat":3.8872602431742624,
+    "lng":11.511267190938156,
+    "message":"<em>Promotion of agricultural finance for agribased enterprisis in rural areas</em><br><small>PN: xxx-xxxx-x</small>",
+    "focus":false,
+    "draggable":false
+    },
+    "studien":{
+    "layer":"GIZ_Office_Cameroun",
+    "lat":3.8952335923458854,
+    "lng":11.515187719746109,
+    "message":"<em>Studies and Experts Fund</em><br><small>PN: xxx-xxxx-x</small>",
+    "focus":false,
+    "draggable":false
+    },
+    "PADER":{
+    "layer":"GIZ_Office_Cameroun",
+    "message":"<em>Rural Development Cameroon</em><br><small>PN: xxx-xxxx-x</small>",
+    "focus":false,
+    "lat":3.8872602431742624,
+    "lng":11.511267190938156
+    },
+    "PADER02":{
+    "layer":"Projects",
+    "message":"<em>Pader</em><br><small>PN: xxx-xxxx-x</small>",
+    "focus":false,
+    "lat":3.8872602431742624,
+    "lng":11.511267190938156
+    },
+    "PARSE":{
+    "layer":"Projects",
+    "message":"<em>Parder Garoua</em><br><small>PN: xxx-xxxx-x</small> <br>details <button ng-controller=ModalCtrl ng-click=open(sm) class='btn btn-success  btn-xs ' type='button'><i class='fa fa-link'></i> </button>",
+    "focus":false,
+    "lat":9.3070698,
+    "lng":13.3934527
+    },
+    "ProCISA":{
+    "layer":"GIZ_Office_Cameroun",
+    "message":"<em>ProCISA</em><br><small>PN: xxx-xxxx-x</small>",
+    "focus":false,
+    "lat":3.8727576996967374,
+    "lng":11.511267190938
+    },
+    "pradec":{
+    "layer":"GIZ_Office_Cameroun",
+    "message":"<em>PRADEC</em><br><small>PN: xxx-xxxx-x</small>",
+    "focus":false,
+    "lat":3.8727576996967374,
+    "lng":11.520347436247334
+    },
+    "PAMFIP":{
+    "layer":"GIZ_Office_Cameroun",
+    "message":"<em>PAMFIP II</em><br><small>PN: xxx-xxxx-x</small>",
+    "focus":false,
+    "lat":3.8727576996967374,
+    "lng":11.520347436247334
+    },
+    "bry":{
+    "layer":"GIZ_Office_Cameroun",
+    "message":"<em>GIZ Regional Office</em><br><small>PN: xxx-xxxx-x</small>",
+    "icon":{
+    "iconUrl":"https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/256/Map-Marker-Marker-Outside-Azure.png",
+    "iconSize":[
+    32,
+    32
+    ]
+    },
+    "focus":false,
+    "lat":3.8952335923458854,
+    "lng":11.515187719746109
+    }
+}
