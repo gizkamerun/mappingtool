@@ -11,9 +11,9 @@
             </div>
         </div>
         
-        <section ng-controller="ModalCtrl">
+        <section ng-controller="MapCtrl">
 
-            <button ng-click=open1(sm) class='btn btn-success  btn-xs ' type='button'> test modal !!! <i class='fa fa-link'></i> </button>
+            <button ng-click=projectdetails(this) class='btn btn-success  btn-xs ' type='button'> test modal !!! <i class='fa fa-link'></i> </button>
 
         </section>
             
@@ -36,7 +36,7 @@
             
           
             <section id="map" ng-controller="MapCtrl">
-                <leaflet style="width: 100%; height: 400px;" center="center" layers="layers" markers="markers" defaults="defaults"></leaflet>
+                <leaflet style="width: 100%; height: 500px;" center="center" layers="layers" markers="markers" defaults="defaults"></leaflet>
                 <div class="text-right s-b-lg">
                     <small><a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | © <a href="https://www.giz.de/en/worldwide/345.html">GIZ CM</a> contributors | 
                         Cette carte est utilisée à titre d’illustration. Elle ne reflète pas toujours la position du gouvernement fédéral allemand 
@@ -45,11 +45,11 @@
                 <hr>
                 <h1>GIZ in CM -- An interractive map example</h1>
         
-                <form style="text-align: center;">
+                <!-- <form style="text-align: center;">
                     Latitude : <input type="number" step="any" ng-model="center.lat">
                     Longitude : <input type="number" step="any" ng-model="center.lng">
                     Zoom : <input type="number" step="any" ng-model="center.zoom">
-                </form>
+                </form> -->
             </section>
         </div>
     </div>

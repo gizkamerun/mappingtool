@@ -10,7 +10,7 @@ function MainCtrl($scope) {
 
     this.userName = 'Demo User';
     this.helloText = 'Welcome to the interactive map service of GIZ Cameroon';
-    this.descriptionText = 'Learn more about GIZ Projects and activities in Camroon, Chad, Gabon, DCR, Sao Tome & Pricipe.';
+    this.descriptionText = 'Learn more about GIZ Projects and activities in Cameroon, Chad, Gabon, DCR, Sao Tome & Pricipe.';
     this.projects = [];
     angular.extend($scope, {
         defaults: {
@@ -24,12 +24,15 @@ function MainCtrl($scope) {
  * used in Basic form view
  */
 function ModalCtrl($scope, $uibModal) {
+    this.project_data = {};
 
-    $scope.open = function () {
-
+    $scope.open = function (  ) {
+        console.log($scope);
+ 
         var modalInstance = $uibModal.open({
-            templateUrl: 'views/modal_example.html',
-            controller: ModalInstanceCtrl
+            templateUrl: 'views/common/modal_tmlp.html',
+             controller: ModalInstanceCtrl
+              
         });
 
         console.info("Click !!! ");
@@ -76,6 +79,8 @@ function ModalInstanceCtrl ($scope, $uibModalInstance) {
     $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     };
+
+    //this.project = $scope._project;
 
 
     $scope.states = [
@@ -135,7 +140,7 @@ function ModalInstanceCtrl ($scope, $uibModalInstance) {
 
 // Fetch Projects data
 function ProjectCtrl(config_data, $scope, $uibModal, $http, DTOptionsBuilder) {
-
+    var vm = this;
     // this.userName = 'Demo User';
     // this.helloText = 'Welcome to the interactive map service of GIZ Cameroon';
     // this.descriptionText = 'Learn more about GIZ Projects and activities in Camroon, Chad, Gabon, DCR, Sao Tome & Pricipe.';
@@ -160,10 +165,31 @@ function ProjectCtrl(config_data, $scope, $uibModal, $http, DTOptionsBuilder) {
                     }
                 ]);
 
+    $scope.projectdetails = function(project){
+        $scope.project = project;
+        // console.log(project);
+
+        $scope.open = function (  ) {
+            console.log($scope);
+    
+            var modalInstance = $uibModal.open({
+                templateUrl: 'views/common/modal_tmlp.html',
+                scope: $scope,
+                controller: ModalInstanceCtrl,
+               
+            });
+            //$scope.$resolve = {_project: project};
+            //console.info("Click !!! ");
+        };
+        $scope.open('sm');
+         
+
+    };
+
     // Add Markers after map is loaded 
     $scope.fetchProjects = function() {
         //$http.get("js/data.geo.json").success(function(data, status) {
-        $http.get(config_data.apiUrl + "/projects.json").success(function(data, status) {
+        $http.get(config_data.apiUrl_local + "/projects.json").success(function(data, status) {
             $scope.projects = data.projects;
             MainCtrl.projects = data.projects;
         
@@ -175,13 +201,27 @@ function ProjectCtrl(config_data, $scope, $uibModal, $http, DTOptionsBuilder) {
 
 function MapCtrl(config_data, $scope, $uibModal, $http) {
 
-    $scope.open = function () {
+    $scope.projectdetails = function(event ){
+         $scope.event = event;
+        // console.log(project);
 
-        var modalInstance = $uibModal.open({
-            templateUrl: 'views/modal_example.html',
-            controller: ModalInstanceCtrl
-        });
+        $scope.open = function (  ) {
+            console.log($scope);
+    
+            var modalInstance = $uibModal.open({
+                templateUrl: 'views/common/modal_tmlp.html',
+                scope: $scope,
+                controller: ModalInstanceCtrl,
+               
+            });
+            //$scope.$resolve = {_project: project};
+            console.info("Click !!! ");
+        };
+        $scope.open('sm');
+         
+
     };
+
 
     var mypointer =  {
         lat: 3.96632600024569,
@@ -198,7 +238,7 @@ var datapoints = {};
             minZoom: 5,
             doubleClickZoom: false,
             scrollWheelZoom: true,
-            attributionControl: true,
+            attributionControl: false,
             tileLayer: "http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png",
             //tileLayer: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
             tileLayerOptions: {

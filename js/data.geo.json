@@ -46,7 +46,7 @@
     },
     "PARSE":{
     "layer":"Projects",
-    "message":"<em>Parder Garoua</em><br><small>PN: xxx-xxxx-x</small> <br>details <button ng-controller=ModalCtrl ng-click=open(sm) class='btn btn-success  btn-xs ' type='button'><i class='fa fa-link'></i> </button>",
+    "message":"<em>Parder Garoua</em><br><small>PN: xxx-xxxx-x</small> <br>details <button  ng-click=projectdetails(event) class='btn btn-success  btn-xs ' type='button'><i class='fa fa-link'></i> </button>",
     "focus":false,
     "lat":9.3070698,
     "lng":13.3934527

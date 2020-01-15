@@ -56,6 +56,21 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
             templateUrl: "views/minor.html",
             data: { pageTitle: 'Example view' }
         })
+        .state('index.stats', {
+            url: "/stats",
+            templateUrl: "views/stats_cm.html",
+            data: { pageTitle: 'GIZ in Cameroon Data' }
+        })
+        .state('index.aboutgizcm', {
+            url: "/aboutgizcm",
+            templateUrl: "views/aboutcmr.html",
+            data: { pageTitle: 'About GIZ in Cameroon' }
+        })
+        .state('index.aboutgizcd', {
+            url: "/aboutgizcd",
+            templateUrl: "views/aboutchad.html",
+            data: { pageTitle: 'About GIZ in Chad' }
+        })
 }
 angular
     .module('inspinia')
