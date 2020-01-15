@@ -13,7 +13,7 @@
                     <table datatable="ng" dt-options="dtOptions"  class="table table-striped table-bordered table-hover dataTables-example">
                         <thead>
                         <tr>
-                            <th>PN</th>
+                            <!-- <th>PN</th> -->
                             <th>Acronym</th>
                             <th>Title</th>
                             <th>Financing</th>
@@ -24,7 +24,7 @@
                         <tbody>
                              
                                 <tr ng-repeat="project in projects">
-                                    <td>{{ project.pn }}</td>
+                                    <!-- <td>{{ project.pn }}</td> -->
                                     <td>{{ project.acronym }}</td>
                                     <td > <em ng-click=projectdetails(project) class="link" >{{ project.title }} </em> </td>
                                     <td>{{ project.scope.title }}</td>
