@@ -75,7 +75,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
 angular
     .module('inspinia')
     .constant('config_data', {  
-        apiUrl: 'http://apps.lit-solutions.site/mappingtool/public/api',
+        apiUrl: 'https://apps.lit-solutions.site/mappingtool/public/api',
         apiUrl_local: 'http://localhost/mappingtool/public/api',
         //baseUrl: '/',
         enableDebug: true
