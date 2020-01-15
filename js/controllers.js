@@ -189,7 +189,7 @@ function ProjectCtrl(config_data, $scope, $uibModal, $http, DTOptionsBuilder) {
     // Add Markers after map is loaded 
     $scope.fetchProjects = function() {
         //$http.get("js/data.geo.json").success(function(data, status) {
-        $http.get(config_data.apiUrl_local + "/projects.json").success(function(data, status) {
+        $http.get(config_data.apiUrl + "/projects.json").success(function(data, status) {
             $scope.projects = data.projects;
             MainCtrl.projects = data.projects;
         
