@@ -12,6 +12,15 @@ function MainCtrl($scope) {
     this.helloText = 'Welcome to the interactive map service of GIZ Cameroon';
     this.descriptionText = 'Learn more about GIZ Projects and activities in Cameroon, Chad, Gabon, DCR, Sao Tome & Pricipe.';
     this.projects = [];
+    this.statsprojects = [];
+    
+    $http.get(config_data.apiUrl + "/points.json").success(function(data, status) {
+            datapoints_xhr = data;
+            $scope.regions = data.regions; 
+        this.statsprojects = data.regions; 
+        });
+    
+    
     angular.extend($scope, {
         defaults: {
             scrollWheelZoom: false
