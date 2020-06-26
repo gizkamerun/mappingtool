@@ -13,16 +13,16 @@ function MainCtrl($scope, $http, config_data) {
     this.descriptionText = 'Learn more about GIZ Projects and activities in Cameroon, Chad, Gabon, DCR, Sao Tome & Pricipe.';
     this.projects = [];
     this.statsprojects = [];
-    $scope.init = function () {
-    $http.get(config_data.apiUrl + "/points.json").success(function(data, status) {
+    $scope.init = function() {
+        $http.get(config_data.apiUrl + "/points.json").success(function(data, status) {
             //datapoints_xhr = data;
             //$scope.regions = data.regions; 
-        this.statsprojects = data.regions; 
+            this.statsprojects = data.regions;
         });
     };
-    $scope.init(); 
-    
-    
+    $scope.init();
+
+
     angular.extend($scope, {
         defaults: {
             scrollWheelZoom: false
@@ -37,26 +37,26 @@ function MainCtrl($scope, $http, config_data) {
 function ModalCtrl($scope, $uibModal) {
     this.project_data = {};
 
-    $scope.open = function (  ) {
+    $scope.open = function() {
         console.log($scope);
- 
+
         var modalInstance = $uibModal.open({
             templateUrl: 'views/common/modal_tmlp.html',
-             controller: ModalInstanceCtrl
-              
+            controller: ModalInstanceCtrl
+
         });
 
         console.info("Click !!! ");
     };
 
-    $scope.open1 = function () {
+    $scope.open1 = function() {
         var modalInstance = $uibModal.open({
             templateUrl: 'views/modal_example.html',
             controller: ModalInstanceCtrl
         });
     };
 
-    $scope.open2 = function () {
+    $scope.open2 = function() {
         var modalInstance = $uibModal.open({
             templateUrl: 'views/modal_example.html',
             controller: ModalInstanceCtrl,
@@ -64,7 +64,7 @@ function ModalCtrl($scope, $uibModal) {
         });
     };
 
-    $scope.open3 = function (size) {
+    $scope.open3 = function(size) {
         var modalInstance = $uibModal.open({
             templateUrl: 'views/modal_example.html',
             size: size,
@@ -72,7 +72,7 @@ function ModalCtrl($scope, $uibModal) {
         });
     };
 
-    $scope.open4 = function () {
+    $scope.open4 = function() {
         var modalInstance = $uibModal.open({
             templateUrl: 'views/modal_example.html',
             controller: ModalInstanceCtrl,
@@ -81,13 +81,13 @@ function ModalCtrl($scope, $uibModal) {
     };
 };
 
-function ModalInstanceCtrl ($scope, $uibModalInstance) {
+function ModalInstanceCtrl($scope, $uibModalInstance) {
 
-    $scope.ok = function () {
+    $scope.ok = function() {
         $uibModalInstance.close();
     };
 
-    $scope.cancel = function () {
+    $scope.cancel = function() {
         $uibModalInstance.dismiss('cancel');
     };
 
@@ -157,43 +157,44 @@ function ProjectCtrl(config_data, $scope, $uibModal, $http, DTOptionsBuilder) {
     // this.descriptionText = 'Learn more about GIZ Projects and activities in Camroon, Chad, Gabon, DCR, Sao Tome & Pricipe.';
     //this.projects = [];
     $scope.dtOptions = DTOptionsBuilder.newOptions()
-                .withDOM('<"html5buttons"B>lTfgitp')
-                .withButtons([
-                    {extend: 'copy'},
-                    {extend: 'csv'},
-                    {extend: 'excel', title: 'ExampleFile'},
-                    {extend: 'pdf', title: 'ExampleFile'},
+        .withDOM('<"html5buttons"B>lTfgitp')
+        .withButtons([
+            { extend: 'copy' },
+            { extend: 'csv' },
+            { extend: 'excel', title: 'ExampleFile' },
+            { extend: 'pdf', title: 'ExampleFile' },
 
-                    {extend: 'print',
-                        customize: function (win){
-                            $(win.document.body).addClass('white-bg');
-                            $(win.document.body).css('font-size', '10px');
+            {
+                extend: 'print',
+                customize: function(win) {
+                    $(win.document.body).addClass('white-bg');
+                    $(win.document.body).css('font-size', '10px');
 
-                            $(win.document.body).find('table')
-                                .addClass('compact')
-                                .css('font-size', 'inherit');
-                        }
-                    }
-                ]);
+                    $(win.document.body).find('table')
+                        .addClass('compact')
+                        .css('font-size', 'inherit');
+                }
+            }
+        ]);
 
-    $scope.projectdetails = function(project){
+    $scope.projectdetails = function(project) {
         $scope.project = project;
         // console.log(project);
 
-        $scope.open = function (  ) {
+        $scope.open = function() {
             console.log($scope);
-    
+
             var modalInstance = $uibModal.open({
                 templateUrl: 'views/common/modal_tmlp.html',
                 scope: $scope,
                 controller: ModalInstanceCtrl,
-               
+
             });
             //$scope.$resolve = {_project: project};
             //console.info("Click !!! ");
         };
         $scope.open('sm');
-         
+
 
     };
 
@@ -203,7 +204,7 @@ function ProjectCtrl(config_data, $scope, $uibModal, $http, DTOptionsBuilder) {
         $http.get(config_data.apiUrl + "/projects.json").success(function(data, status) {
             $scope.projects = data.projects;
             MainCtrl.projects = data.projects;
-        
+
         });
     };
 
@@ -212,36 +213,49 @@ function ProjectCtrl(config_data, $scope, $uibModal, $http, DTOptionsBuilder) {
 
 function MapCtrl(config_data, $scope, $uibModal, $http) {
 
-    $scope.projectdetails = function(event ){
-         $scope.event = event;
+    this.regions = {};
+    var vm = this;
+
+    this.init = function() {
+        $http.get(config_data.apiUrl + "/points.json").success(function(data, status) {
+            $scope.statsprojects = vm.statsprojects = data.regions;
+            console.log("Fetch Stats");
+        });
+    };
+    this.init();
+
+
+
+    $scope.projectdetails = function(event) {
+        $scope.event = event;
         // console.log(project);
 
-        $scope.open = function (  ) {
+        $scope.open = function() {
             console.log($scope);
-    
+
             var modalInstance = $uibModal.open({
                 templateUrl: 'views/common/modal_tmlp.html',
                 scope: $scope,
                 controller: ModalInstanceCtrl,
-               
+
             });
             //$scope.$resolve = {_project: project};
             console.info("Click !!! ");
         };
         $scope.open('sm');
-         
+
 
     };
 
 
-    var mypointer =  {
+    var mypointer = {
         lat: 3.96632600024569,
-            lng: 11.5500640869141,
+        lng: 11.5500640869141,
         zoom: 6
     };
 
-var datapoints = {};
-    
+    var datapoints = {};
+
     // setup map 
     angular.extend($scope, {
         defaults: {
@@ -272,9 +286,9 @@ var datapoints = {};
                 }
             },
             center: {
-            lat: 3.8404,
-            lng: 13.80521,
-            zoom: 6
+                lat: 3.8404,
+                lng: 13.80521,
+                zoom: 6
             },
         },
         center: {
@@ -333,7 +347,7 @@ var datapoints = {};
                     url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
                     type: 'xyz'
                 }
-                
+
             }
 
         },
@@ -342,22 +356,22 @@ var datapoints = {};
                 layer: "GIZ_Office_Cameroun",
                 lat: 3.96632600024569,
                 lng: 11.5500640869141,
-                message: "<em>My pointer </em><br> " ,
+                message: "<em>My pointer </em><br> ",
                 icon: {
-                        iconUrl: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
-                        iconSize: [ 40, 40 ],
-                    },
+                    iconUrl: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+                    iconSize: [40, 40],
+                },
                 focus: false,
                 draggable: true
             },
-            
+
             bry: {
                 layer: "GIZ_Office_Cameroun",
                 message: "<em>GIZ Regional Office</em><br><small>PN: xxx-xxxx-x</small>",
                 icon: {
-                        iconUrl: 'https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/256/Map-Marker-Marker-Outside-Azure.png',
-                        iconSize: [ 32, 32 ],
-                    },
+                    iconUrl: 'https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/256/Map-Marker-Marker-Outside-Azure.png',
+                    iconSize: [32, 32],
+                },
                 focus: false,
                 lat: 3.8952335923458854,
                 lng: 11.515187719746109
@@ -370,11 +384,11 @@ var datapoints = {};
         //$http.get("js/data.geo.json").success(function(data, status) {
         $http.get(config_data.apiUrl + "/points.json").success(function(data, status) {
             datapoints_xhr = data;
-            $scope.regions = data.regions; 
+            $scope.statsprojects = vm.statsprojects = data.regions;
             angular.extend($scope, {
                 markers: data.pointers
-                });
-        
+            });
+
         });
     };
 
@@ -382,18 +396,19 @@ var datapoints = {};
 
 };
 
-function datatablesCtrl($scope,DTOptionsBuilder){
+function datatablesCtrl($scope, DTOptionsBuilder) {
 
     $scope.dtOptions = DTOptionsBuilder.newOptions()
         .withDOM('<"html5buttons"B>lTfgitp')
         .withButtons([
-            {extend: 'copy'},
-            {extend: 'csv'},
-            {extend: 'excel', title: 'ExampleFile'},
-            {extend: 'pdf', title: 'ExampleFile'},
+            { extend: 'copy' },
+            { extend: 'csv' },
+            { extend: 'excel', title: 'ExampleFile' },
+            { extend: 'pdf', title: 'ExampleFile' },
 
-            {extend: 'print',
-                customize: function (win){
+            {
+                extend: 'print',
+                customize: function(win) {
                     $(win.document.body).addClass('white-bg');
                     $(win.document.body).css('font-size', '10px');
 
@@ -407,7 +422,7 @@ function datatablesCtrl($scope,DTOptionsBuilder){
     /**
      * persons - Data used in Tables view for Data Tables plugin
      */
-     
+
 
 }
 
