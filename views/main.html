@@ -44,12 +44,38 @@
                     </div>
                 <hr>
                 <h1>GIZ in CM -- An interractive map example</h1>
+                
+                
+                <h1>Num. Projects By Regions</h1>
+                
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Regions</th>
+                      <th scope="col">Num. of PRojects</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="row in MapCtrl.regions">
+                      <th scope="row">1</th>
+                      <td>{{row.title}}</td>
+                      <td>{{row.count}}</td>
+                      
+                    </tr>
+                    
+                  </tbody>
+                </table>
+                
+                
         
                 <!-- <form style="text-align: center;">
                     Latitude : <input type="number" step="any" ng-model="center.lat">
                     Longitude : <input type="number" step="any" ng-model="center.lng">
                     Zoom : <input type="number" step="any" ng-model="center.zoom">
                 </form> -->
+                
+                
             </section>
         </div>
     </div>
