@@ -13,12 +13,14 @@ function MainCtrl($scope, $http, config_data) {
     this.descriptionText = 'Learn more about GIZ Projects and activities in Cameroon, Chad, Gabon, DCR, Sao Tome & Pricipe.';
     this.projects = [];
     this.statsprojects = [];
-    
+    $scope.init = function () {
     $http.get(config_data.apiUrl + "/points.json").success(function(data, status) {
-            datapoints_xhr = data;
-            $scope.regions = data.regions; 
+            //datapoints_xhr = data;
+            //$scope.regions = data.regions; 
         this.statsprojects = data.regions; 
         });
+    };
+    $scope.init(); 
     
     
     angular.extend($scope, {
