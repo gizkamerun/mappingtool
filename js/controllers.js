@@ -6,7 +6,7 @@
 /**
  * MainCtrl - controller
  */
-function MainCtrl($scope, $http) {
+function MainCtrl($scope, $http, config_data) {
 
     this.userName = 'Demo User';
     this.helloText = 'Welcome to the interactive map service of GIZ Cameroon';
