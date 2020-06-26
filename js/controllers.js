@@ -359,6 +359,7 @@ var datapoints = {};
         //$http.get("js/data.geo.json").success(function(data, status) {
         $http.get(config_data.apiUrl + "/points.json").success(function(data, status) {
             datapoints_xhr = data;
+            $scope.regions = data.regions; 
             angular.extend($scope, {
                 markers: data.pointers
                 });
