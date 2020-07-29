@@ -385,6 +385,7 @@ function MapCtrl(config_data, $scope, $uibModal, $http) {
         $http.get(config_data.apiUrl + "/points.json").success(function(data, status) {
             datapoints_xhr = data;
             $scope.statsprojects = vm.statsprojects = data.regions;
+            $scope.regions = data.regions;
             angular.extend($scope, {
                 markers: data.pointers
             });
