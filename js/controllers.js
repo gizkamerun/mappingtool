@@ -391,6 +391,25 @@ function MapCtrl(config_data, $scope, $uibModal, $http) {
 
         });
     };
+    
+    $scope.setCurrentfilter = function(filter = 'none') {
+        $scope.myfilter = filter;
+    };
+
+    $scope.getMarker = function(id) {
+        //$http.get("js/data.geo.json").success(function(data, status) {
+        $http.get(config_data.apiUrl_local + "/points/a/" + id + ".json").success(function(data, status) {
+            $scope.datapoints = data;
+            $scope.regions = data.regions;
+            $scope.setCurrentfilter($scope.regions[id]);
+            angular.extend($scope, {
+                markers: data.pointers
+            });
+
+        });
+
+
+    };
 
     $scope.addMarkers();
 
