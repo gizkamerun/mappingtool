@@ -74,7 +74,7 @@
                     <tbody>
                         <tr ng-repeat="row in statsprojects">
                             <th scope="row">{{$index}}</th>
-                            <td>{{row.title}}</td>
+                            <td>{{row.title}} -- <button ng-click=getMarker(row.id)> View markers </button></p></td>
                             <td>{{row.count}}</td>
 
                         </tr>
