@@ -72,7 +72,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="row in statsprojects">
+                        <tr ng-repeat="row in statsprojects" ng-show="row.count > 0">
                             <th scope="row">{{$index}}</th>
                             <td>{{row.title}} -- <button ng-click=getMarker(row.id)> View markers </button></p></td>
                             <td>{{row.count}}</td>
