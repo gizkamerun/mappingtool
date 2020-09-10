@@ -8,48 +8,71 @@
                 <small>
                     {{main.descriptionText}}
                 </small>
+
+                <p> Map : {{maps | json }}</p>
             </div>
         </div>
-        
+
         <!-- <section ng-controller="MapCtrl">
 
             <button ng-click=projectdetails(this) class='btn btn-success  btn-xs ' type='button'> test modal !!! <i class='fa fa-link'></i> </button>
 
         </section> -->
-            
 
-        <p class="text-right">
-            Render Projects by : 
-            <button type="button" class="btn btn-outline btn-default">Sector</button>
-            <button type="button" class="btn btn-outline btn-default">Region</button>
-            <button type="button" class="btn btn-outline btn-info">Commissoner</button>
-            <button type="button" class="btn btn-outline btn-default">Scope</button>
-            <button type="button" class="btn btn-outline btn-default">ODD</button>
 
-        </p>
+        <!-- <p class="text-right">
+            Render Projects by :
+            <button type="button" class="btn btn-outline btn-default" marker-context>Sector</button>
+            <button type="button" ng-click=getMarker() class="btn btn-outline btn-default" marker-context>Region</button>
+            <button type="button" class="btn btn-outline btn-info" marker-context> Commissoner</button>
+            <button type="button" class="btn btn-outline btn-default" marker-context>Scope</button>
+            <button type="button" class="btn btn-outline btn-default" marker-context>ODD</button>
 
-        
+        </p> -->
 
-        
+
+
+
 
         <div class="col-lg-12">
-            
-          
+
+
             <section id="map" ng-controller="MapCtrl">
+
+                <p class="text-right">
+                    Render Projects by :
+                    <button type="button" ng-click=addMarkers() class="btn btn-outline btn-default" marker-context>Sector</button>
+                    <button type="button" ng-click=getMarker() class="btn btn-outline btn-default" marker-context>Region</button>
+                    <button type="button" ng-click=addMarkers() class="btn btn-outline btn-info" marker-context> Commissoner</button>
+                    <button type="button" ng-click=addMarkers() class="btn btn-outline btn-default" marker-context>Scope</button>
+                    <button type="button" ng-click=addMarkers() class="btn btn-outline btn-default" marker-context>ODD</button>
+
+                </p>
+
                 <leaflet style="width: 100%; height: 500px;" center="center" layers="layers" markers="markers" defaults="defaults"></leaflet>
                 <div class="text-right s-b-lg">
                     <small><a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | © <a href="https://www.giz.de/en/worldwide/345.html">GIZ CM</a> contributors | 
                         Cette carte est utilisée à titre d’illustration. Elle ne reflète pas toujours la position du gouvernement fédéral allemand 
                         au regard du droit international et n’engage pas la responsabilité de la GIZ GmbH.</small>
-                    </div>
+                </div>
                 <hr>
+                <h3>Filter : {{myfilter.title}}</h3>
+                <ol>
+                    <li>
+                        <p> All --
+                            <button ng-click=addMarkers()> reset</button></p>
+                    </li>
+                    <li ng-repeat="region in regions">
+                        <p>{{region.title}} -- {{region.id}}
+                            <button ng-click=getMarker(region.id)> View markers </button></p>
+                    </li>
+                </ol>
+
                 <h1>GIZ in CM -- An interractive map example</h1>
-        
-                <!-- <form style="text-align: center;">
-                    Latitude : <input type="number" step="any" ng-model="center.lat">
-                    Longitude : <input type="number" step="any" ng-model="center.lng">
-                    Zoom : <input type="number" step="any" ng-model="center.zoom">
-                </form> -->
+
+                <form style="text-align: center;">
+                    Latitude : <input type="number" step="any" ng-model="center.lat"> Longitude : <input type="number" step="any" ng-model="center.lng"> Zoom : <input type="number" step="any" ng-model="center.zoom">
+                </form>
             </section>
         </div>
     </div>

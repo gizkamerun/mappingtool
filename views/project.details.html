@@ -1,0 +1,23 @@
+ 
+  
+
+
+    <div class="inmodal">
+        <div class="modal-header">
+            <h4 class="modal-title">{{project.title}}  </h4> <br>
+            <small>Start : {{project.start_date | date}} -- End : {{project.end_date | date}}</small>
+        </div>
+        <div class="modal-body">
+            <p> {{project.objective}} </p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat fugit quod vero eaque commodi praesentium recusandae minus accusantium suscipit magnam voluptatum qui, voluptates quae fugiat dolore non sunt id expedita voluptatem possimus natus rerum minima. Cumque quaerat expedita fugit aut porro, beatae labore quo eligendi.</p>
+            
+           
+            <strong>Project activities locations : {{countData(project.markers)}}</strong>
+            <!-- <pre>{{project| json}}</pre> -->
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-white" ng-click="cancel()">Close</button>
+            <!-- <button type="button" class="btn btn-primary" ng-click="ok()">Save changes</button> -->
+        </div>
+    
+    </div>

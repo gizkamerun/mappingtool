@@ -26,7 +26,7 @@
                                 <tr ng-repeat="project in projects">
                                     <!-- <td>{{ project.pn }}</td> -->
                                     <td>{{ project.acronym }}</td>
-                                    <td > <em ng-click=projectdetails(project) class="link" >{{ project.title }} </em> </td>
+                                    <td > <em ng-click=projectdetails(project) class="link" >{{ project.title }}  </em> -- <a ui-sref="project.details">details</span></a> </td>
                                     <td>{{ project.scope.title }}</td>
                                     <td>{{ project.sector.title }}</td>
                                     <td>{{ project.commissioner.title }}</td>
@@ -40,4 +40,9 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <ui-view></ui-view>
+    </div>
 </section>
+

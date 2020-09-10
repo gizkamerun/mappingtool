@@ -21,6 +21,11 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
             url: "/index",
             templateUrl: "views/common/content.html",
         })
+        .state('dummy', {
+            abstract: true,
+            url: "/pub",
+            templateUrl: "views/common/dummy.html",
+        })
         .state('index.main', {
             url: "/main",
             templateUrl: "views/main.html",
@@ -31,11 +36,10 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
             templateUrl: "views/projects.html",
             data: { pageTitle: 'Projects' },
             resolve: {
-                loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([
-                        {
+                loadPlugin: function($ocLazyLoad) {
+                    return $ocLazyLoad.load([{
                             serie: true,
-                            files: ['js/plugins/dataTables/datatables.min.js','css/plugins/dataTables/datatables.min.css']
+                            files: ['js/plugins/dataTables/datatables.min.js', 'css/plugins/dataTables/datatables.min.css']
                         },
                         {
                             serie: true,
@@ -51,12 +55,39 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
                 }
             }
         })
+        .state('project', {
+            abstract: true,
+            url: "/project",
+            templateUrl: "views/common/content.html",
+        })
+        .state('project.details', {
+            url: "/details",
+            templateUrl: "views/project.details.html",
+            data: { pageTitle: 'Project Details : ' }
+        })
         .state('index.minor', {
             url: "/minor",
             templateUrl: "views/minor.html",
             data: { pageTitle: 'Example view' }
         })
-        .state('index.stats', {
+        // No Menu View
+        .state('dummy.security', {
+            url: "/security",
+            templateUrl: "views/security.html",
+            data: { pageTitle: 'Incidents' }
+        })
+        .state('dummy.crud', {
+            url: "/crudmap",
+            templateUrl: "views/crudmap.html",
+            data: { pageTitle: 'CRUD Page' }
+        })
+        .state('dummy.mymap', {
+            url: "/mymap",
+            templateUrl: "views/mymap.html",
+            data: { pageTitle: 'User Map' }
+        })
+
+    .state('index.stats', {
             url: "/stats",
             templateUrl: "views/stats_cm.html",
             data: { pageTitle: 'GIZ in Cameroon Data' }
@@ -74,14 +105,14 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
 }
 angular
     .module('inspinia')
-    .constant('config_data', {  
-        apiUrl: 'https://apps.lit-solutions.site/mappingtool/public/api',
+    .constant('config_data', {
+        apiUrl: 'https://imapbry.dday.site/api', // 'http://apps.lit-solutions.site/mappingtool/public/api',
         apiUrl_local: 'http://localhost/mappingtool/public/api',
         //baseUrl: '/',
         enableDebug: true
-      })
+    })
     .config(config)
-    
-    .run(function($rootScope, $state) {
-        $rootScope.$state = $state;
-    });
+
+.run(function($rootScope, $state) {
+    $rootScope.$state = $state;
+});
